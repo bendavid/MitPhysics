@@ -699,10 +699,16 @@ Double_t IsolationTools::BetaMwithPUCorrection(const PFCandidateCol *PFNoPileUp,
     //exclude PFCands outside of cone 0.4
     Double_t dr1 = MathUtils::DeltaR(p->Mom(), pf->Mom());
     if (dr1 > extRadius) continue;
-    if (pf->PFType() == PFCandidate::eHadron)  {
-      if (pf->HasTrk())   ptSumChHadnoPU += pf->Pt();
-      else etsumNeuHad += pf->Et();
-    }
+    
+    if (pf->PFType() == PFCandidate::eHadron) ptSumChHadnoPU += pf->Pt();
+    
+    //inner veto for neutrals
+    if  (dr1<0.01) continue;
+    
+    //pt threshold for neutrals;
+    if (pf->Pt()<0.5) continue;
+    
+    if (pf->PFType() == PFCandidate::eNeutralHadron) etsumNeuHad += pf->Pt();
     else if (pf->PFType() == PFCandidate::eGamma) ptsumGamma += pf->Pt(); 
   }
 
@@ -714,9 +720,14 @@ Double_t IsolationTools::BetaMwithPUCorrection(const PFCandidateCol *PFNoPileUp,
     //exclude PFCands outside of cone 0.4
     Double_t dr2 = MathUtils::DeltaR(p->Mom(), pf->Mom());
     if (dr2 > extRadius) continue;
-    if (pf->HasTrk()) ptsumPU += pf->Pt();
-    if (pf->PFType() == PFCandidate::eHadron && !pf->HasTrk())  etsumNeuHad += pf->Et();
-    else if (pf->PFType() == PFCandidate::eGamma) ptsumGamma += pf->Pt(); 
+    
+    //inner veto for neutrals
+    if  (dr2<0.01) continue;
+    
+    //pt threshold for neutrals;
+    if (pf->Pt()<0.5) continue;    
+    
+    if (pf->PFType() == PFCandidate::eHadron || pf->PFType() == PFCandidate::eElectron || pf->PFType() == PFCandidate::eMuon) ptsumPU += pf->Pt();
   }
   
   //   for (UInt_t i=0; i<PFPUCands->GetEntries(); ++i){
