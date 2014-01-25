@@ -67,12 +67,15 @@ void PhotonTools::SmearPhoton(Photon* p, TRandom3* rng, Double_t width, UInt_t i
     scale = rng->Gaus(1.,width);
   }
   
+  p->SetEnergyPreSmearScale(p->E());
+  p->SetEnergyScale(scale);
+  
   p->SetMom(scale*mom.X(), scale*mom.Y(), scale*mom.Z(), scale*mom.E());
 
   // moved here from SmearPhotonError, in order to being able to
   // use different smearing for Error and actual Momentum (any reason not to? Josh?)
   Double_t smear = p->EnergySmearing();
-  p->SetEnergySmearing(TMath::Sqrt(smear*smear+width*width*p->E()*p->E()));
+  p->SetEnergySmearing(TMath::Sqrt(smear*smear+width*width));
     
 
   return;

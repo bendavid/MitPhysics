@@ -155,6 +155,7 @@ namespace mithep
       Float_t eerrsmeared;
       Float_t esmearing;
       Float_t eerrsmearing;
+      Float_t epresmearscale;
       Float_t escale;
       Float_t idmva;
       Float_t ecalisodr03;

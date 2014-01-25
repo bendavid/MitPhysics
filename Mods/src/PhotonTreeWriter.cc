@@ -1490,6 +1490,7 @@ PhotonTreeWriterPhoton<NClus>::SetVars(const Photon *p,
     eerrsmeared = p->EnergyErrSmeared();
     esmearing = p->EnergySmearing();
     eerrsmearing = p->EnergyErrSmearing();
+    epresmearscale = p->EnergyPreSmearScale();
     escale = p->EnergyScale();    
     idmva = p->IdMva();
     hcalisodr03 = p->HcalTowerSumEtDr03();
