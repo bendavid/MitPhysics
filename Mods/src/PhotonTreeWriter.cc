@@ -1492,6 +1492,9 @@ PhotonTreeWriterPhoton<NClus>::SetVars(const Photon *p,
     eerrsmearing = p->EnergyErrSmearing();
     epresmearscale = p->EnergyPreSmearScale();
     escale = p->EnergyScale();    
+    stochasticrho = p->StochasticRho();
+    stochasticphi = p->StochasticPhi();
+    stochasticpivot = p->StochasticPivot();
     idmva = p->IdMva();
     hcalisodr03 = p->HcalTowerSumEtDr03();
     ecalisodr03 = p->EcalRecHitIsoDr03();        

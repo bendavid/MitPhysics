@@ -157,6 +157,9 @@ namespace mithep
       Float_t eerrsmearing;
       Float_t epresmearscale;
       Float_t escale;
+      Float_t stochasticrho;
+      Float_t stochasticphi;
+      Float_t stochasticpivot;
       Float_t idmva;
       Float_t ecalisodr03;
       Float_t hcalisodr03;

@@ -264,7 +264,7 @@ namespace mithep
     Double_t            GetDataEnCorr(UInt_t run, const Photon *p);
     Double_t            GetMCSmearFac(PhotonTools::eScaleCats cat,                    bool useSpecialSmear = false);   // last flag in case of special smearing for error computation
     
-    Double_t            GetMCSmearFacStochastic(const Photon *p) const;
+    Double_t            GetMCSmearFacStochastic(Photon *p) const;
     
     Float_t             GetEventCat(PhotonTools::CiCBaseLineCats cat1, PhotonTools::CiCBaseLineCats cat2);
 

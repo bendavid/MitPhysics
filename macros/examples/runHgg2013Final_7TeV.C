@@ -367,7 +367,12 @@ void runHgg2013Final_7TeV(const char *fileset    = "0000",
   
   //------------------------------------------2012 HCP--------------------------------------------------------------
   photcic->SetMCSmearFactors(0.0068, 0.0096, 0.0101, 0.0185, 0.0158, 0.0185, 0.0201, 0.0183);
-
+  
+  photcic->SetMCStochasticPivot(6.60119,6.7276,6.52397,6.73261);
+  photcic->SetMCStochasticRho(0.0068, 0.0096, 0.0101, 0.0185);
+  photcic->SetMCStochasticPhi(TMath::Pi()/2.,TMath::Pi()/2.,TMath::Pi()/2.,TMath::Pi()/2.);
+  photcic->SetStochasticSmear(false);  
+  
   photcic->AddEnCorrFromFile(encorrfilename);
 
   //-----------------------------------------------------------------------------------------------------------------
@@ -402,6 +407,11 @@ void runHgg2013Final_7TeV(const char *fileset    = "0000",
   //------------------------------------------2012 HCP--------------------------------------------------------------
   photcicnoeleveto->SetMCSmearFactors(0.0068, 0.0096, 0.0101, 0.0185, 0.0158, 0.0185, 0.0201, 0.0183);
 
+  photcicnoeleveto->SetMCStochasticPivot(6.60119,6.7276,6.52397,6.73261);
+  photcicnoeleveto->SetMCStochasticRho(0.0068, 0.0096, 0.0101, 0.0185);
+  photcicnoeleveto->SetMCStochasticPhi(TMath::Pi()/2.,TMath::Pi()/2.,TMath::Pi()/2.,TMath::Pi()/2.);
+  photcicnoeleveto->SetStochasticSmear(false);    
+  
   photcicnoeleveto->AddEnCorrFromFile(encorrfilename);
 
 
@@ -438,6 +448,11 @@ void runHgg2013Final_7TeV(const char *fileset    = "0000",
   //------------------------------------------2012 HCP--------------------------------------------------------------
   photpresel->SetMCSmearFactors(0.0068, 0.0096, 0.0101, 0.0185, 0.0158, 0.0185, 0.0201, 0.0183);
 
+  photpresel->SetMCStochasticPivot(6.60119,6.7276,6.52397,6.73261);
+  photpresel->SetMCStochasticRho(0.0068, 0.0096, 0.0101, 0.0185);
+  photpresel->SetMCStochasticPhi(TMath::Pi()/2.,TMath::Pi()/2.,TMath::Pi()/2.,TMath::Pi()/2.);
+  photpresel->SetStochasticSmear(false);      
+  
   photpresel->AddEnCorrFromFile(encorrfilename);
 
   
@@ -468,6 +483,11 @@ void runHgg2013Final_7TeV(const char *fileset    = "0000",
   photpreselinverteleveto->SetInputPhotonsName(photreg->GetOutputName());
   //------------------------------------------2012 HCP--------------------------------------------------------------
   photpreselinverteleveto->SetMCSmearFactors(0.0068, 0.0096, 0.0101, 0.0185, 0.0158, 0.0185, 0.0201, 0.0183);
+  
+  photpreselinverteleveto->SetMCStochasticPivot(6.60119,6.7276,6.52397,6.73261);
+  photpreselinverteleveto->SetMCStochasticRho(0.0068, 0.0096, 0.0101, 0.0185);
+  photpreselinverteleveto->SetMCStochasticPhi(TMath::Pi()/2.,TMath::Pi()/2.,TMath::Pi()/2.,TMath::Pi()/2.);
+  photpreselinverteleveto->SetStochasticSmear(false);     
   
   photpreselinverteleveto->AddEnCorrFromFile(encorrfilename);
   

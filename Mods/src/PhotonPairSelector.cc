@@ -487,12 +487,15 @@ void PhotonPairSelector::Process()
       double ewidth2 = width2;
       
       //replace smearing (for photon energy only!) with stochastic smearing (only applies to EB for now)
+      double stochasticwidth1 = GetMCSmearFacStochastic(fixPh1st[iPair]);
+      double stochasticwidth2 = GetMCSmearFacStochastic(fixPh2nd[iPair]);
+      
       if (fStochasticSmear) {
         if (fixPh1st[iPair]->SCluster()->AbsEta()<1.5) {
-          ewidth1 = GetMCSmearFacStochastic(fixPh1st[iPair]);
+          ewidth1 = stochasticwidth1;
         }
         if (fixPh2nd[iPair]->SCluster()->AbsEta()<1.5) {
-          ewidth2 = GetMCSmearFacStochastic(fixPh2nd[iPair]);
+          ewidth2 = stochasticwidth2;
         }
       }
       
@@ -1321,7 +1324,7 @@ Double_t PhotonPairSelector::GetMCSmearFac(PhotonTools::eScaleCats cat, bool use
 }
 
 //---------------------------------------------------------------------------------------------------
-Double_t PhotonPairSelector::GetMCSmearFacStochastic(const Photon *p) const {
+Double_t PhotonPairSelector::GetMCSmearFacStochastic(Photon *p) const {
  
   PhotonTools::eScaleCats cat = PhotonTools::EScaleCat(p);
   
@@ -1352,6 +1355,10 @@ Double_t PhotonPairSelector::GetMCSmearFacStochastic(const Photon *p) const {
   else {
     return 0.;
   }
+  
+  p->SetStochasticRho(rho);
+  p->SetStochasticPhi(phi);
+  p->SetStochasticPivot(pivot);
   
   double etorigin = p->E()/cosh(p->SCluster()->Eta());
   double smearconst = rho*sin(phi);
